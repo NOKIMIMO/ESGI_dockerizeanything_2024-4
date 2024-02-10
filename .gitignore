@@ -1,0 +1,12 @@
+*~
+*.swp
+*.DS_Store
+.idea
+*.class
+*.log
+*.core
+/vendor*/
+*.bin
+*.exe
+*.dll
+blog/blog
