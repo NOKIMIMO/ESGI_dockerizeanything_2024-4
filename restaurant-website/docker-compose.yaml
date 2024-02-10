@@ -1,0 +1,17 @@
+# Définir cette configuration Compose afin de lancer l'application
+# Grilli en production.
+
+version: '3.8'
+
+services:
+  app-resto:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./var:/var/www/html/var
+    environment:
+      - APP_ENV=prod
+    restart: always

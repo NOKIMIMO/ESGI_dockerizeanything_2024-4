@@ -1,0 +1,37 @@
+# Définir cette configuration Compose afin de lancer l'application
+# Make Me Watch en production.
+version: '0.2'
+
+services:
+  nodejs-srv:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - nodejs-srv-data:/usr/src/app
+
+  webapp-clt:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - webapp-clt-data:/usr/src/app
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - nodejs-srv
+      - webapp-clt
+
+volumes:
+  nodejs-srv-data:
+  webapp-clt-data:
