@@ -11,16 +11,12 @@ WORKDIR /app
 
 RUN cargo install --path .
 
-FROM ubuntu:latest
+RUN cargo install diesel_cli --no-default-features --features postgres
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    gnupg \
-    gcc \
-    libpq-dev
+RUN diesel migration run
 
-COPY --from=builder /app/* /app/blog/
+RUN cp /usr/local/cargo/bin/blog ./blog
 
-COPY static /app/blog/
+EXPOSE 8000
 
-RUN ls -la
+CMD ["./blog"]

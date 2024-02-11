@@ -20,8 +20,8 @@ RUN curl -sS https://getcomposer.org/installer -o composer-setup.php && \
     rm composer-setup.php
 
 EXPOSE 80
-
-COPY . /var/www/html
+#pas bien
+COPY . /var/www/html 
 WORKDIR /var/www/html
 RUN rm .env
 RUN mv .envprod .env
