@@ -4,19 +4,22 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     gnupg \
     gcc \
+    netcat \
     libpq-dev
+
+ENV DATABASE_URL=postgres://user1:user1@blog_db:5432/blog
+#DONNE ACCES A TOUS LES RESEAUX
+ENV ROCKET_ADDRESS=0.0.0.0
 
 COPY . /app
 WORKDIR /app
 
 RUN cargo install --path .
 
-RUN cargo install diesel_cli --no-default-features --features postgres
-
-RUN diesel migration run
+EXPOSE 8000
 
 RUN cp /usr/local/cargo/bin/blog ./blog
 
-EXPOSE 8000
+RUN cargo install diesel_cli --no-default-features --features postgres
 
-CMD ["./blog"]
+# CMD ["./blog"]

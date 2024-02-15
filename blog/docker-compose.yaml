@@ -10,6 +10,8 @@ services:
       - "8000:8000"
     depends_on:
       - blog_db
+    command: sh -c "while ! nc -z blog_db 5432; do sleep 5; done && diesel migration run && ./blog "
+
 
   blog_db:
     container_name: blog_db
