@@ -24,9 +24,7 @@ EXPOSE 80
 COPY . /var/www/html 
 WORKDIR /var/www/html
 RUN rm .env
-RUN mv .envprod .env
-
-RUN chown -R www-data:www-data /var/www/html/var
+COPY .envprod .env
 
 RUN composer install --no-dev --optimize-autoloader
 
@@ -36,6 +34,8 @@ COPY .docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN mkdir -p /run/php/
 
 RUN php bin/console asset-map:compile 
+
+RUN chown -R www-data:www-data /var/www/html/var
 
 RUN php bin/console cache:clear --env=prod
 
