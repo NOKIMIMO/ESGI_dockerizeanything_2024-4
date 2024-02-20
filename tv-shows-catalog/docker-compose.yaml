@@ -1,6 +1,6 @@
 # Définir cette configuration Compose afin de lancer l'application
 # Make Me Watch en production.
-version: '0.2'
+version: '3.9'
 
 services:
   nodejs-srv:
