@@ -21,4 +21,4 @@ RUN cp /usr/local/cargo/bin/blog ./blog
 
 RUN cargo install diesel_cli --no-default-features --features postgres
 
-# CMD ["./blog"]
+CMD ["./blog"]
