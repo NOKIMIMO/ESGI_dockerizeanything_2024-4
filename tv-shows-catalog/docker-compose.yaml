@@ -7,8 +7,6 @@ services:
     build: 
       context: ./server
       dockerfile: Dockerfile
-    ports:
-      - "3001:3000"
     volumes:
       - nodejs-srv-data:/usr/src/app
 
@@ -16,8 +14,6 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
-    ports:
-      - "3002:3000"
     volumes:
       - webapp-clt-data:/usr/src/app
   nginx:
