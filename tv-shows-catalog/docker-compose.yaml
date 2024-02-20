@@ -7,27 +7,16 @@ services:
     build: 
       context: ./server
       dockerfile: Dockerfile
-    volumes:
-      - nodejs-srv-data:/usr/src/app
-
   webapp-clt:
     build:
       context: ./client
       dockerfile: Dockerfile
-    volumes:
-      - webapp-clt-data:/usr/src/app
   nginx:
     build:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
-      - "80:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - "${NGINX_PORT:-80}:80"
     depends_on:
       - nodejs-srv
       - webapp-clt
-
-volumes:
-  nodejs-srv-data:
-  webapp-clt-data:
