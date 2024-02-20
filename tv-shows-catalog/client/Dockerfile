@@ -1,18 +1,13 @@
 # Créer un Dockerfile pour cette application en mode production
-FROM node:lts AS builder
+FROM node:lts
 
 ENV API_BASE_URL=http://nodejs-srv:3000
 
 WORKDIR /usr/src/app
 
-COPY .env.example .env
-
-COPY package*.json ./
-
-RUN npm install
-
 COPY . .
 
+RUN npm install
 
 RUN npm run build
 

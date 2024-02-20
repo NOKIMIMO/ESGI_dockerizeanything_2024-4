@@ -1,8 +1,7 @@
-FROM rustlang/rust:nightly as builder
+FROM rustlang/rust:nightly
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    gnupg \
     gcc \
     netcat \
     libpq-dev
