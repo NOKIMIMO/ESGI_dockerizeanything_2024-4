@@ -8,6 +8,8 @@ services:
     build: .
     ports:
       - "8000:8000"
+    env_file:
+      - .envrust
     depends_on:
       blog_db:
         condition: service_healthy
