@@ -13,10 +13,11 @@ services:
     depends_on:
       blog_db:
         condition: service_healthy
+    command: sh -c "diesel migration run && ./blog"
 
   blog_db:
     container_name: ${POSTGRES_DOCKER_NAME}
-    image: "postgres:16"
+    image: "postgres:16-alpine"
     env_file:
       - .env
     healthcheck:

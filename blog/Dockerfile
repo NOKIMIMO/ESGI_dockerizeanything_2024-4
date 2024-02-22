@@ -1,4 +1,4 @@
-FROM rustlang/rust:nightly
+FROM rustlang/rust:nightly-slim
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -16,6 +16,4 @@ EXPOSE 8000
 
 RUN cp /usr/local/cargo/bin/blog ./blog
 
-RUN chmod +x entrypoint.sh
-
-ENTRYPOINT ["./entrypoint.sh"]
+CMD ["./blog"]
