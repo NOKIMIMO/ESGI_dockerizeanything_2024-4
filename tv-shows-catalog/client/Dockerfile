@@ -1,6 +1,6 @@
 # Créer un Dockerfile pour cette application en mode production
 # S1
-FROM node:lts AS builder
+FROM node:21-alpine3.18 AS builder
 
 ENV API_BASE_URL=http://nodejs-srv:3000
 
@@ -16,7 +16,7 @@ RUN npm run build
 
 
 # S2
-FROM node:lts AS deployer
+FROM node:21-alpine3.18 AS deployer
 
 WORKDIR /usr/src/app
 

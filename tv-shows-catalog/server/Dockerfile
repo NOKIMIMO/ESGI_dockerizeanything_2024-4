@@ -1,5 +1,5 @@
 # Créer un Dockerfile pour cette application en mode production
-FROM node:lts
+FROM node:21-alpine3.18
 
 WORKDIR /usr/src/app
 
