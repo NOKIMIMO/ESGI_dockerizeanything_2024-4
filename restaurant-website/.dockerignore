@@ -1,0 +1,9 @@
+docker*
+Docker*
+.en*
+.git*
+default.conf
+README.md
+.docker
+.nginx
+.tests
