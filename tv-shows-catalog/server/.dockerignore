@@ -1,0 +1,9 @@
+.env*
+.eslint*
+.gitignore
+.npmc
+.prettier*
+Dockerfile
+.dockerignore
+nginx*
+README.md
